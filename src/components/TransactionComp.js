@@ -27,7 +27,7 @@ function TransactionComponent({ transactions }) {
                                 return <div className="tableStuff" key={transaction.id}>
                                     <p>{index + 1}</p>
                                     <p className={`${transaction.type === "expense" ? "expense" : "income"}`}>{transaction.type}</p>
-                                    <p>{transaction.amount}</p>
+                                    <p>{transaction.amount} $</p>
                                     <p>{transaction.description}</p>
                                 </div>
                             })
