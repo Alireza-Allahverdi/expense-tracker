@@ -1,5 +1,3 @@
-import { Fragment, useEffect } from "react";
-
 function TransactionComponent({ transactions }) {
 
     return (
@@ -12,12 +10,17 @@ function TransactionComponent({ transactions }) {
                     :
                     <>
                         <div className="tableTitles">
-                            <span>row</span>
+                            <span>Row</span>
+                            <span>Type</span>
+                            <span>Amount</span>
+                            <span>Description</span>
+                            {/*
                             {Object.keys(transactions[0]).map((row, index) => {
                                 return <span key={index}>
                                     {row}
                                 </span>
                             })}
+                            */}
                         </div>
                         {
                             transactions.map((transaction, index) => {
@@ -26,7 +29,6 @@ function TransactionComponent({ transactions }) {
                                     <p className={`${transaction.type === "expense" ? "expense" : "income"}`}>{transaction.type}</p>
                                     <p>{transaction.amount}</p>
                                     <p>{transaction.description}</p>
-                                    <p>{transaction.id}</p>
                                 </div>
                             })
 
