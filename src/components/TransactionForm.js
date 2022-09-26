@@ -6,8 +6,10 @@ const TransactionForm = (props) => {
         amount: '',
         description: ""
     })
+    const [emptinessChecker, setEmptinessChecker] = useState(false)
 
     const inputsChangeHandler = (e) => {
+        setEmptinessChecker(false)
         setFieldValue({
             ...fieldValue,
             [e.target.name]: e.target.value
@@ -17,6 +19,7 @@ const TransactionForm = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         if (!fieldValue.amount || !fieldValue.description) {
+            setEmptinessChecker(true)
             return
         }
         props.addTransaction(fieldValue)
@@ -26,7 +29,6 @@ const TransactionForm = (props) => {
     return (
         <form className="transactionForm" onSubmit={submitHandler}>
             <h3>Transaction Form</h3>
-            <p className="error">This field must not be empty</p>
             <input
                 type="number"
                 name="amount"
@@ -34,7 +36,14 @@ const TransactionForm = (props) => {
                 placeholder="Amount"
                 onChange={inputsChangeHandler}
             />
-            <p className="error">This field must not be empty</p>
+            <p className="error">
+                {
+                    emptinessChecker &&
+                        !fieldValue.amount ?
+                        "This field must not be empty" :
+                        ""
+                }
+            </p>
             <input
                 type="text"
                 name="description"
@@ -42,6 +51,14 @@ const TransactionForm = (props) => {
                 placeholder="Description"
                 onChange={inputsChangeHandler}
             />
+            <p className="error">
+                {
+                    emptinessChecker &&
+                        !fieldValue.description ?
+                        "This field must not be empty" :
+                        ""
+                }
+            </p>
             <div className="radioBtn">
                 <label>
                     <input
