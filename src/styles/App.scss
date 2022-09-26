@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+hr {
+    width: 150px;
+    background-color: black;
+    margin: 2rem auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@import "./overviewStyle.scss"
