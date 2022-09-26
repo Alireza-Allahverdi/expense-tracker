@@ -16,6 +16,9 @@ const TransactionForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        if (!fieldValue.amount || !fieldValue.description) {
+            return
+        }
         props.addTransaction(fieldValue)
         props.changeForm()
     }
@@ -23,6 +26,7 @@ const TransactionForm = (props) => {
     return (
         <form className="transactionForm" onSubmit={submitHandler}>
             <h3>Transaction Form</h3>
+            <p className="error">This field must not be empty</p>
             <input
                 type="number"
                 name="amount"
@@ -30,6 +34,7 @@ const TransactionForm = (props) => {
                 placeholder="Amount"
                 onChange={inputsChangeHandler}
             />
+            <p className="error">This field must not be empty</p>
             <input
                 type="text"
                 name="description"
