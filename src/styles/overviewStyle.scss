@@ -30,7 +30,6 @@
         border-color: #dc2626;
     }
 }
-
 .transactionForm {
     display: flex;
     flex-direction: column;
@@ -73,7 +72,6 @@
     margin: 1rem 0;
     text-align: start;
 }
-
 .resultSection {
     display: flex;
     max-width: 350px;
@@ -89,7 +87,7 @@
         border: 1px solid grey;
         border-radius: 5px;
         padding: 10px;
-        margin: auto 5px;
+        margin: 5px;
         font-size: 1.1rem;
         box-shadow: black 0px 2px 5px;
     }
@@ -104,14 +102,20 @@
         color: red;
     }
 }
-
 .transactionList {
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: 0 auto;
 }
-
+.titleAndSearch {
+    input {
+        padding: 10px 12px;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto;
+    }
+}
 .tableTitles {
     display: flex;
     justify-content: space-around;
@@ -123,14 +127,20 @@
         width: 20%;
     }
 }
-
+.tableBody {
+    overflow-y: auto;
+    max-height: 300px;
+}
 .tableStuff {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    overflow-y: auto;
+    max-height: 200px;
     p {
         width: 20%;
+        text-align: justify;
     }
     .expense {
         color: red;
