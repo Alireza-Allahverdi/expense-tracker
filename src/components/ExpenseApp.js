@@ -9,7 +9,6 @@ const ExpenseApp = () => {
     const [transaction, setTransaction] = useState([])
 
     const addTransaction = (values) => {
-        console.log(values);
         const data = { ...values, id: Date.now() }
         if (data.type === "expense") {
             setExpense(expense + parseFloat(data.amount))

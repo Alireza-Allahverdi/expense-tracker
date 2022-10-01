@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function TransactionComponent({ transactions }) {
-
+    
     const [searchBox, setSearchBox] = useState("")
     const [filteredTrans, setFilteredTrans] = useState(transactions)
 
@@ -11,7 +11,6 @@ function TransactionComponent({ transactions }) {
             return
         }
         const filteredItems = transactions.filter((tr) => tr.description.toLowerCase().includes(search))
-        console.log(filteredItems);
         setFilteredTrans(filteredItems)
     }
 
@@ -32,7 +31,7 @@ function TransactionComponent({ transactions }) {
                     type="text"
                     value={searchBox}
                     onChange={changeHandler}
-                    placeholder="search"
+                    placeholder="search transactions..."
                 />
             </div>
             <hr />
@@ -54,18 +53,19 @@ function TransactionComponent({ transactions }) {
                             })}
                             */}
                         </div>
-                        {
-                            filteredTrans.map((transaction, index) => {
-                                return <div className="tableStuff" key={transaction.id}>
-                                    <p>{index + 1}</p>
-                                    <p className={`${transaction.type === "expense" ? "expense" : "income"}`}>{transaction.type}</p>
-                                    <p>{transaction.amount} $</p>
-                                    <p>{transaction.description}</p>
-                                </div>
-                            })
+                        <div className="tableBody">
+                            {
+                                filteredTrans.map((transaction, index) => {
+                                    return <div className="tableStuff" key={transaction.id}>
+                                        <p>{index + 1}</p>
+                                        <p className={`${transaction.type === "expense" ? "expense" : "income"}`}>{transaction.type}</p>
+                                        <p>{transaction.amount} $</p>
+                                        <p>{transaction.description}</p>
+                                    </div>
+                                })
+                            }
 
-
-                        }
+                        </div>
                     </>
             }
         </div>
