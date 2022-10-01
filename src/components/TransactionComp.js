@@ -1,11 +1,43 @@
+import { useEffect, useState } from "react";
+
 function TransactionComponent({ transactions }) {
+
+    const [searchBox, setSearchBox] = useState("")
+    const [filteredTrans, setFilteredTrans] = useState(transactions)
+
+    const searchResults = (search) => {
+        if (!search || search === "") {
+            setFilteredTrans(transactions)
+            return
+        }
+        const filteredItems = transactions.filter((tr) => tr.description.toLowerCase().includes(search))
+        console.log(filteredItems);
+        setFilteredTrans(filteredItems)
+    }
+
+    const changeHandler = (e) => {
+        setSearchBox(e.target.value)
+        searchResults(e.target.value)
+    }
+
+    useEffect(() => {
+        searchResults(searchBox)
+    }, [transactions])
 
     return (
         <div className="transactionList">
-            <h3>Transactions</h3>
+            <div className="titleAndSearch">
+                <h3>Transactions</h3>
+                <input
+                    type="text"
+                    value={searchBox}
+                    onChange={changeHandler}
+                    placeholder="search"
+                />
+            </div>
             <hr />
             {
-                transactions.length === 0 ?
+                filteredTrans.length === 0 ?
                     <h5>Nothing To Show</h5>
                     :
                     <>
@@ -14,7 +46,7 @@ function TransactionComponent({ transactions }) {
                             <span>Type</span>
                             <span>Amount</span>
                             <span>Description</span>
-                            {/*
+                            {/* IF THE DATA DIDN'T INCLUDE THE ID:
                             {Object.keys(transactions[0]).map((row, index) => {
                                 return <span key={index}>
                                     {row}
@@ -23,7 +55,7 @@ function TransactionComponent({ transactions }) {
                             */}
                         </div>
                         {
-                            transactions.map((transaction, index) => {
+                            filteredTrans.map((transaction, index) => {
                                 return <div className="tableStuff" key={transaction.id}>
                                     <p>{index + 1}</p>
                                     <p className={`${transaction.type === "expense" ? "expense" : "income"}`}>{transaction.type}</p>
