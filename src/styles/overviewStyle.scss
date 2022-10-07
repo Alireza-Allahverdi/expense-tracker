@@ -125,6 +125,12 @@
     font-weight: 600;
     span {
         width: 20%;
+        &:first-child{
+            width: 10%;
+        }
+        &:last-child{
+            width: 30%;
+        }
     }
 }
 .tableBody {
@@ -140,7 +146,14 @@
     max-height: 200px;
     p {
         width: 20%;
-        text-align: justify;
+        text-align: center;
+        &:first-child{
+            width: 10%;
+        }
+        &:last-child{
+            text-align: justify;
+            width: 30%;
+        }
     }
     .expense {
         color: red;

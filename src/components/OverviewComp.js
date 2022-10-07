@@ -12,7 +12,7 @@ const Overview = ({ income, expense, addTransaction }) => {
     return (
         <Fragment>
             <div className="balanceSection">
-                <p>Balance : {income - expense}</p>
+                <p>Balance : {income - expense} $</p>
                 <button className={`${trFormState ? "cancel" : ""}`} onClick={() => setTrFormState(!trFormState)}>
                     {
                         !trFormState ? "Add Transaction"
